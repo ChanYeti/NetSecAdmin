@@ -1,0 +1,55 @@
+
+#
+# /etc/fstab
+# Created by anaconda on Tue Jul 21 09:17:34 2026
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk/'.
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info.
+#
+# After editing this file, run 'systemctl daemon-reload' to update systemd
+# units generated from this file.
+#
+UUID=b3924ce9-a51e-4d26-92c4-b50c3312d7ed /                       xfs     defaults        0 0
+UUID=ce76081c-5f87-4775-bcc8-7aa0b4c238a1 /boot                   xfs     defaults        0 0
+UUID=92C4-4022          /boot/efi               vfat    umask=0077,shortname=winnt 0 2
+UUID=2be99c5d-470d-48c1-a995-a3d375fcf9c1 /home                   xfs     defaults        0 0
+UUID=1d4c707c-be2b-40d9-a9a8-ba293d025655 none                    swap    defaults        0 0
+
+#
+# (1) Specific configuration
+#
+#/dev/nvme0n2p1   /testmount   ext4   defaults	0 2
+#
+# (2) Oracle configuration
+
+#UUID="d3c0250e-834f-411a-98cf-6f7fcbbeb960"  /oracle   xfs    defaults  0 2
+
+#/dev/nvme0n3p1    /oracle     xfs      defaults    0 0
+#
+# (3) LVM configuration
+#
+#/dev/vg1/lv1    /lv1    ext4    defaults    0 2
+#/dev/vg1/lv2    /lv2    ext4    defaults    0 2
+#
+# (4) RAID configuration
+# 
+#/dev/md0   /raid0   xfs   defaults   0 0
+#/dev/md1    /raid1   xfs   defaults   0 2
+#/dev/md5    /raid5    xfs   defaults   0 2
+#
+# (5) SWAP configuration
+#
+#/swap/swapfile   none   swap   pri=4   0 0
+#UUID=e031e926-1da7-4713-b138-8c0cdb3eeaef   swap   swap   pri=10   0 0
+#/dev/nvme0n2p1   /testmount   xfs   defaults   0 0
+
+nfsserver:/export/data  /mnt/data  nfs  x-systemd.automount,_netdev  0 0
+
+#
+# (2) SAMBA(CIFS) Mount Test
+#
+//192.168.10.202/samba_share     /mnt/server     cifs    credentials=/root/cred                0 0
+or
+//192.168.10.202/samba_share     /mnt/server     cifs    username=soldesk,password=soldesk1.   0 0
+
+
